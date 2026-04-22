@@ -238,22 +238,131 @@
 # log(1,2)
 
 
+'''Задача 2 (под вопросом)'''
+# def call_counter(num_times):
+#     def decorators(func):
+#         def wrapper(*args, **kwargs):
+#             result = []
+#             for i in range(num_times):
+#                 res = func(*args, **kwargs):
+#                 result.append(f'Вызов {i + 1}: {res}')
+#                 return '\n'.join(result)
+#
+#
+# @call_counter(num_times=1):
+# def say_hello(name):
+#     return f'Hello, {name}'
+#
+'''Задача 3'''
+#
+# def repeat(n):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             for _ in range(n):
+#                result = func(*args, **kwargs)
+#             return result
+#         return wrapper
+#     return decorator
+#
+# @repeat(n = 5)
+# def print_hello():
+#     print('Hello')
+#
+# print_hello()
+#
+#
+#
+#
+#
+'''22.04.2026 Создание собственных модулей'''
+# import random as r # обращение к модулю рандом через имя r
+# print(r.randint(1,10))
+#
+# from random import randint, choice  # из рандомa берём лишь 1 ф-цию рандинт
+# print(randint(1,10))
+# print(choice([1,2,3,4,5,6,7])) #choice - перемешивает выборку чисел
+#
+#
+# from random import randint as rint, choice as ch
+# print(rint(1,10))
+# print(ch([1,2,3,4,5,6,7]))
+#
+# from math import * # с помощью * импортируем сразу все функции (не рекомендуется)
+# print(pi)
+
+'''Модуль создается при создании самого файла New--> Python File'''
+
+# from test import func, MyClass, number
+#
+# func()
+# print(number)
+# print(MyClass.a)
+#
+#
+# from test import *
+#
+# func()
+# print(number)
+# print(MyClass.a)
+#
+#
+#
+#
+#
+# import random
+#
+# a = [1, 2, 3, 4]
+#
+# index = random.randint(0, len(a) - 1)
+# rand_num = a[index]
+# print(f'{rand_num} с индексом {index}') #аналог random.choice
+#
+# import random
+# a = [1,2,3,4]
+# print(random.choice(a))
+#
+#
+#
+#
+# import test
+#
+# def func_a():
+#     test.func_b()
+#
+# class Base:
+#     pass
 
 
-def call_counter(func):
-    def wrapper():
-        count = 0
-        say_hello()
-        count =+ 1
-        print(f'{func.__name__} вызвалась {count} раз')
-    return wrapper
 
+from calc import *
 
-@call_counter
-def say_hello():
-    print('Hello!')
+# from calc import add, sub, mul, div
 
+class Calculator:
+    def __init__(self) -> None:
+        self.main()
 
-say_hello()
+    def main(self):
+        print('Это калькулятор')
+        while True:
+            num1 = int(input('Введите первое число: '))
+            num2 = int(input('Введите второе число: '))
+            choice = int(input('Выберите необходимое действие 1: +, 2: -, 3: *, 4: /, 0: Выход\n'))
+            match choice:
+                case 0:
+                    print('Для завершения нажмите Enter')
+                    input()
+                    break
+                case 1:
+                    print(add(num1, num2))
+                case 2:
+                    print(sub(num1, num2))
+                case 3:
+                    print(mul(num1, num2))
+                case 4:
+                    print(div(num1, num2))
+                case _:
+                    print('Неверный выбор')
 
-
+obj = Calculator()
+obj.main()

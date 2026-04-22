@@ -365,4 +365,6 @@ class Calculator:
                     print('Неверный выбор')
 
 obj = Calculator()
-obj.main()
+
+
+
